@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class UsusarioService {
+export class UsuarioService {
 
   // Almacena los datos del usaurio
   public usuario:{

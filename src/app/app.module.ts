@@ -6,12 +6,20 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
+// Componentes
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { LoginPage } from './login/login.page';
+import { HomePage } from './home/home.page';
+import { ListPage } from './list/list.page';
+
+// Servicios
+import { VuelosService } from './services/vuelos.service';
+import { UsuarioService } from './services/usuario.service';
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
+  declarations: [AppComponent, LoginPage, HomePage, ListPage],
+  entryComponents: [LoginPage, HomePage, ListPage],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -20,7 +28,9 @@ import { AppRoutingModule } from './app-routing.module';
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    VuelosService,
+    UsuarioService
   ],
   bootstrap: [AppComponent]
 })

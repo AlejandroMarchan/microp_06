@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HomePage } from './home/home.page';
+import { ListPage } from './list/list.page';
+import { LoginPage } from './login/login.page';
 
 const routes: Routes = [
   {
@@ -9,11 +12,15 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: './home/home.module#HomePageModule'
+    component: HomePage
   },
   {
     path: 'list',
-    loadChildren: './list/list.module#ListPageModule'
+    component: ListPage
+  },
+  {
+    path: 'login',
+    component: LoginPage
   }
 ];
 

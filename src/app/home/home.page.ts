@@ -14,7 +14,7 @@ export class HomePage {
 
   }
 
-  async logIn(){
+  async abrirLogin(){
     let loginModal: HTMLIonModalElement = await this.modalCtrl.create({
           component: LoginPage
     });

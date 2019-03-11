@@ -16,6 +16,7 @@ import { ListPage } from './list/list.page';
 // Servicios
 import { VuelosService } from './services/vuelos.service';
 import { UsuarioService } from './services/usuario.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, LoginPage, HomePage, ListPage],
@@ -23,7 +24,8 @@ import { UsuarioService } from './services/usuario.service';
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [
     StatusBar,

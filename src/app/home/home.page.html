@@ -1,20 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <ion-buttons style="margin-bottom: 5px" slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>
-      Home
+    <ion-title id="titulo">
+      VuelaPuto
     </ion-title>
+    <div id="logIn" (click)="logIn()">
+      <ion-icon style="font-size: 25px; margin-left: 27px;" name="log-in"></ion-icon>
+      <p style="font-size: 12px; margin: 0px; padding: 0px;"><b>Iniciar Sesión</b></p>
+    </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
     <ion-card class="welcome-card">
-      <ion-img src="/assets/shapes.svg"></ion-img>
       <ion-card-header>
         <ion-card-subtitle>{{ vuelosService.vuelos[0].reservado }}</ion-card-subtitle>
-        <ion-card-title (click)="vuelosService.vuelos[0].reservado = true;">Click para reservar</ion-card-title>
+        <ion-card-title (click)="vuelosService.vuelos[0].reservado = !vuelosService.vuelos[0].reservado;">Click para reservar</ion-card-title>
       </ion-card-header>
       <ion-card-content>
         <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>

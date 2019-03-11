@@ -5,23 +5,66 @@ import { Injectable } from '@angular/core';
 })
 export class VuelosService {
 
+  // Almacena los vuelos disponibles
   public vuelos: {
-    hora: Date,
+    fechaSalida: Date,
     precio: number,
-    reservado: boolean
+    reservado: boolean,
+    origen: string,
+    destino: string
   } [] = [
     {
-      hora: new Date(25, 3, 2019),
-      precio: 30,
-      reservado: false
+      fechaSalida: new Date(2019, 2, 11, 21, 0),
+      precio: 700,
+      reservado: false,
+      origen: 'Madrid',
+      destino: 'Perú'
     },
     {
-      hora: new Date(25, 4, 2019),
+      fechaSalida: new Date(2019, 2, 16, 21, 0),
+      precio: 500,
+      reservado: false,
+      origen: 'Madrid',
+      destino: 'China'
+    },
+    {
+      fechaSalida: new Date(2019, 2, 11, 21, 0),
       precio: 30,
-      reservado: false
+      reservado: false,
+      origen: 'Japón',
+      destino: 'Australia'
+    },
+    {
+      fechaSalida: new Date(2019, 2, 11, 21, 0),
+      precio: 30,
+      reservado: false,
+      origen: 'Madrid',
+      destino: 'Perú'
+    },
+    {
+      fechaSalida: new Date(2019, 2, 11, 21, 0),
+      precio: 30,
+      reservado: false,
+      origen: 'Madrid',
+      destino: 'Perú'
+    },
+    {
+      fechaSalida: new Date(2019, 2, 11, 21, 0),
+      precio: 30,
+      reservado: false,
+      origen: 'Madrid',
+      destino: 'Perú'
+    },
+    {
+      fechaSalida: new Date(2019, 2, 11, 21, 0),
+      precio: 30,
+      reservado: false,
+      origen: 'Madrid',
+      destino: 'Perú'
     }
   ];
 
   constructor() {
    }
+
 }

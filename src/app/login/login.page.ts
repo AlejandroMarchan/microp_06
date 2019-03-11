@@ -25,6 +25,7 @@ export class LoginPage {
     }
     this.usuarioService.usuario.username = this.usuario;
     this.usuarioService.usuario.contrasena = this.password;
+    this.usuarioService.logged = true;
     this.closeModal();
   }
 

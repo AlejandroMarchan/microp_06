@@ -6,9 +6,13 @@
     <ion-title id="titulo">
       VuelaCool
     </ion-title>
-    <div id="logIn" (click)="abrirLogin()">
+    <div *ngIf="!usuarioService.logged" id="logIn" (click)="abrirLogin()">
       <ion-icon style="font-size: 25px; margin-left: 27px;" name="log-in"></ion-icon>
       <p style="font-size: 12px; margin: 0px; padding: 0px;"><b>Iniciar Sesión</b></p>
+    </div>
+    <div *ngIf="usuarioService.logged" id="logIn" (click)="cerrarSesion()">
+      <ion-icon style="font-size: 25px; margin-left: 27px;" name="log-out"></ion-icon>
+      <p style="font-size: 12px; margin: 0px; padding: 0px;"><b>Cerrar Sesión</b></p>
     </div>
   </ion-toolbar>
 </ion-header>

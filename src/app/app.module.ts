@@ -19,10 +19,11 @@ import { UsuarioService } from './services/usuario.service';
 
 // Modulos
 import { FormsModule } from '@angular/forms';
+import { AcercaDePage } from './acerca-de/acerca-de.page';
 
 @NgModule({
-  declarations: [AppComponent, LoginPage, HomePage, ListPage],
-  entryComponents: [LoginPage, HomePage, ListPage],
+  declarations: [AppComponent, LoginPage, HomePage, ListPage, AcercaDePage],
+  entryComponents: [LoginPage, HomePage, ListPage, AcercaDePage],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),

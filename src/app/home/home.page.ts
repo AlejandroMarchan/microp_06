@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { VuelosService } from '../services/vuelos.service';
-import { ModalController, AlertController } from '@ionic/angular';
+import { ModalController, AlertController, ToastController } from '@ionic/angular';
 import { LoginPage } from '../login/login.page';
 import { UsuarioService } from '../services/usuario.service';
 
@@ -11,8 +11,16 @@ import { UsuarioService } from '../services/usuario.service';
 })
 export class HomePage {
 
-  constructor(public vuelosService: VuelosService, public modalCtrl: ModalController, public usuarioService: UsuarioService, public alertCtrl: AlertController){
+  public copiaVuelos: {
+    fechaSalida: Date,
+    precio: number,
+    reservado: boolean,
+    origen: string,
+    destino: string
+  } [];
 
+  constructor(public toastCtrl: ToastController,public vuelosService: VuelosService, public modalCtrl: ModalController, public usuarioService: UsuarioService, public alertCtrl: AlertController){
+    this.copiaVuelos = this.vuelosService.vuelos.slice();
   }
 
   async abrirLogin(){
@@ -35,8 +43,13 @@ export class HomePage {
           }
         }, {
           text: 'Aceptar',
-          handler: () => {
+          handler: async () => {
             this.usuarioService.logged = false;
+            const toast = await this.toastCtrl.create({
+              message: '¡Hasta pronto ' + this.usuarioService.usuario.username + '!',
+              duration: 2500
+            });
+            toast.present();
           }
         }
       ]
@@ -44,4 +57,21 @@ export class HomePage {
 
     await alert.present();
   }
+
+  buscarOrigen(ev: any) {
+    // Reset items back to all of the items
+    this.copiaVuelos = this.vuelosService.vuelos.slice();
+
+    // set val to the value of the searchbar
+    const val = ev.target.value;
+
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.copiaVuelos = this.vuelosService.vuelos.filter((vuelo) => {
+        return (vuelo.origen.toLowerCase().indexOf(val.toLowerCase()) > -1);
+      });
+      console.log(this.copiaVuelos);
+    }
+  }
+
 }

@@ -18,13 +18,19 @@
 </ion-header>
 
 <ion-content>
-    <ion-card class="welcome-card">
-      <ion-card-header>
-        <ion-card-subtitle>{{ vuelosService.vuelos[0].reservado }}</ion-card-subtitle>
-        <ion-card-title (click)="vuelosService.vuelos[0].reservado = !vuelosService.vuelos[0].reservado;">Click para reservar</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
-      </ion-card-content>
-    </ion-card>
+    <div class="">
+      <ion-searchbar (ionInput)="buscarOrigen($event)" placeholder="Busque un lugar..."></ion-searchbar>
+    </div>
+    <div *ngFor="let vuelo of copiaVuelos">
+      <ion-card class="welcome-card">
+        <ion-card-header>
+          <ion-card-title>{{ vuelo.origen }} <ion-icon name="arrow-round-forward"></ion-icon> {{ vuelo.destino }}</ion-card-title>
+          <ion-card-subtitle>Fecha Salida: {{ vuelo.fechaSalida | date:'M/d/yy, HH:mm' }}</ion-card-subtitle>
+          <ion-card-subtitle>Precio: {{ vuelo.precio }}€</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...</p>
+        </ion-card-content>
+      </ion-card>
+    </div>
 </ion-content>

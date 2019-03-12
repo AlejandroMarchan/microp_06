@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ModalController, AlertController } from '@ionic/angular';
+import { ModalController, AlertController, ToastController } from '@ionic/angular';
 import { UsuarioService } from '../services/usuario.service';
 
 @Component({
@@ -12,7 +12,7 @@ export class LoginPage {
   public usuario: string = '';
   public password: string = '';
 
-  constructor(public modalCtrl: ModalController, public usuarioService: UsuarioService, public alertCtrl: AlertController) { }
+  constructor(public modalCtrl: ModalController, public usuarioService: UsuarioService, public alertCtrl: AlertController, public toastCtrl: ToastController) { }
 
   async login(){
     const alert = await this.alertCtrl.create({
@@ -26,6 +26,11 @@ export class LoginPage {
     this.usuarioService.usuario.username = this.usuario;
     this.usuarioService.usuario.contrasena = this.password;
     this.usuarioService.logged = true;
+    const toast = await this.toastCtrl.create({
+      message: '¡Bienvenido ' + this.usuario + '!',
+      duration: 2500
+    });
+    toast.present();
     this.closeModal();
   }
 

@@ -19,8 +19,21 @@ export class HomePage {
     destino: string
   } [];
 
+  public paises;
+
   constructor(public toastCtrl: ToastController,public vuelosService: VuelosService, public modalCtrl: ModalController, public usuarioService: UsuarioService, public alertCtrl: AlertController){
-    this.copiaVuelos = this.vuelosService.vuelos.slice();
+    this.vuelosService.loadPaises().subscribe(
+      data => {
+        console.log(data);
+        this.paises = data;
+        this.vuelosService.generateFligths(data);
+        this.copiaVuelos = this.vuelosService.vuelos.slice();
+      },
+      error => {
+        console.log('Error al cargar los paises: ');
+        console.log(error);
+      }
+    );
   }
 
   async abrirLogin(){
@@ -72,6 +85,11 @@ export class HomePage {
       });
       console.log(this.copiaVuelos);
     }
+  }
+
+  reservaVuelo(idVuelo){
+    console.log('reservado');
+    this.vuelosService.vuelos[idVuelo].reservado = true;
   }
 
 }

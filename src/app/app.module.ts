@@ -20,6 +20,7 @@ import { UsuarioService } from './services/usuario.service';
 // Modulos
 import { FormsModule } from '@angular/forms';
 import { AcercaDePage } from './acerca-de/acerca-de.page';
+import { HttpModule }    from '@angular/http';
 
 @NgModule({
   declarations: [AppComponent, LoginPage, HomePage, ListPage, AcercaDePage],
@@ -28,7 +29,8 @@ import { AcercaDePage } from './acerca-de/acerca-de.page';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
   providers: [
     StatusBar,

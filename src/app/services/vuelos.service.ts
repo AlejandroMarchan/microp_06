@@ -13,8 +13,14 @@ export class VuelosService {
     fechaSalida: Date,
     precio: number,
     reservado: boolean,
-    origen: string,
-    destino: string
+    origen: {
+      ciudad: string,
+      bandera: string
+    },
+    destino: {
+      ciudad: string,
+      bandera: string
+    }
   } [] = [];
   // [
   //   {
@@ -74,7 +80,7 @@ export class VuelosService {
    loadPaises() {
       let headers = new Headers()
       headers.append("Content-Type", 'application/json');
-      let url = "https://restcountries.eu/rest/v2/all?fields=name;capital;currencies";
+      let url = "https://restcountries.eu/rest/v2/all?fields=name;capital;flag";
       return this.http.get(url, {headers})
                   .pipe(map(res=> {
                     return res.json();
@@ -112,15 +118,27 @@ export class VuelosService {
          fechaSalida: Date,
          precio: number,
          reservado: boolean,
-         origen: string,
-         destino: string
+         origen: {
+           ciudad: string,
+           bandera: string
+         },
+         destino: {
+           ciudad: string,
+           bandera: string
+         }
        } = {
          idVuelo: i,
          fechaSalida: new Date(2019, mes, dia, Math.floor(Math.random() * 24), Math.floor(Math.random() * 60)),
          precio: Math.floor(Math.random() * (maxPrice - minPrice)) + minPrice,
          reservado: false,
-         origen: origen,
-         destino: destino
+         origen: {
+           ciudad: origen,
+           bandera: paises[j].flag
+         },
+         destino: {
+           ciudad: destino,
+           bandera: paises[aux].flag
+         }
        };
        this.vuelos.push(vuelo);
      }

@@ -15,8 +15,14 @@ export class HomePage {
     fechaSalida: Date,
     precio: number,
     reservado: boolean,
-    origen: string,
-    destino: string
+    origen: {
+      ciudad: string,
+      bandera: string
+    },
+    destino: {
+      ciudad: string,
+      bandera: string
+    }
   } [];
 
   public paises;
@@ -81,15 +87,24 @@ export class HomePage {
     // if the value is an empty string don't filter the items
     if (val && val.trim() != '') {
       this.copiaVuelos = this.vuelosService.vuelos.filter((vuelo) => {
-        return (vuelo.origen.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return (vuelo.origen.ciudad.toLowerCase().indexOf(val.toLowerCase()) > -1);
       });
       console.log(this.copiaVuelos);
     }
   }
 
-  reservaVuelo(idVuelo){
-    console.log('reservado');
-    this.vuelosService.vuelos[idVuelo].reservado = true;
+  async reservaVuelo(idVuelo){
+    // console.log('reservado');
+    if(!this.usuarioService.logged){
+      this.abrirLogin();
+      const toast = await this.toastCtrl.create({
+        message: 'Por favor, inicie sesisión para poder reservar vuelos',
+        duration: 2500
+      });
+      toast.present();
+    }else{
+      this.vuelosService.vuelos[idVuelo].reservado = true;
+    }
   }
 
 }

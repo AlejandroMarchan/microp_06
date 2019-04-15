@@ -21,10 +21,11 @@ import { UsuarioService } from './services/usuario.service';
 import { FormsModule } from '@angular/forms';
 import { AcercaDePage } from './acerca-de/acerca-de.page';
 import { HttpModule }    from '@angular/http';
+import { RegistroPage } from './registro/registro.page';
 
 @NgModule({
-  declarations: [AppComponent, LoginPage, HomePage, ListPage, AcercaDePage],
-  entryComponents: [LoginPage, HomePage, ListPage, AcercaDePage],
+  declarations: [AppComponent, LoginPage, HomePage, ListPage, AcercaDePage, RegistroPage],
+  entryComponents: [LoginPage, HomePage, ListPage, AcercaDePage, RegistroPage],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
